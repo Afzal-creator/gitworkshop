@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DARK LIGHT | Tyndall Effect Blog</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #050711;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* NAVIGATION */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 23px 8%;
+    background: rgba(5,7,17,0.95);
+    border-bottom: 1px solid #17243d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    color: #48caff;
+    text-shadow: 0 0 15px #008cff;
+}
+
+nav a {
+    color: #c5d1e5;
+    text-decoration: none;
+    margin-left: 22px;
+    font-size: 14px;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: #48caff;
+    text-shadow: 0 0 10px #008cff;
+}
+
+/* HERO SECTION */
+
+.hero {
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    padding: 80px 8%;
+    position: relative;
+    overflow: hidden;
+
+    background:
+    linear-gradient(90deg,
+    rgba(3,5,16,.96),
+    rgba(3,5,16,.45)),
+    url("https://images.unsplash.com/photo-1511497584788-876760111969")
+    center/cover;
+}
+
+/* LIGHT BEAMS */
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 850px;
+    top: -150px;
+    left: 65%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(0,174,255,.13),
+        rgba(90,190,255,.32),
+        transparent
+    );
+    transform: rotate(28deg);
+    filter: blur(18px);
+    animation: lightMove 5s infinite alternate;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 800px;
+    top: -100px;
+    left: 78%;
+    background: rgba(90,80,255,.13);
+    transform: rotate(28deg);
+    filter: blur(30px);
+    animation: lightMove 7s infinite alternate;
+}
+
+@keyframes lightMove {
+    from {
+        opacity: .25;
+        transform: translateX(-30px) rotate(28deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(30px) rotate(28deg);
+    }
+}
+
+.hero-content {
+    max-width: 700px;
+    position: relative;
+    z-index: 2;
+}
+
+.tagline {
+    color: #48caff;
+    letter-spacing: 5px;
+    font-size: 13px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: 75px;
+    color: #ffffff;
+    letter-spacing: 5px;
+    text-shadow: 0 0 25px #008cff;
+    margin-bottom: 20px;
+}
+
+.hero h2 {
+    font-size: 25px;
+    color: #8ddcff;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #c2c9d9;
+    font-size: 17px;
+    line-height: 1.9;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 32px;
+    background: #087fc5;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0,140,255,.5);
+    transition: .3s;
+}
+
+.btn:hover {
+    background: #48caff;
+    color: #050711;
+    box-shadow: 0 0 30px #008cff;
+}
+
+/* COMMON SECTIONS */
+
+section {
+    padding: 85px 8%;
+}
+
+.section-title {
+    text-align: center;
+    color: #48caff;
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 15px rgba(0,140,255,.5);
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #8c9bb5;
+    margin-bottom: 45px;
+    line-height: 1.7;
+}
+
+/* ABOUT */
+
+.about {
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    color: #b5c0d3;
+    font-size: 17px;
+    line-height: 2;
+}
+
+/* SCIENCE CARDS */
+
+.science {
+    background: #090e1c;
+}
+
+.science-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 25px;
+}
+
+.science-card {
+    background: linear-gradient(145deg,#111b32,#080d1a);
+    padding: 32px 25px;
+    border: 1px solid #1d4163;
+    border-radius: 12px;
+    text-align: center;
+    transition: .4s;
+}
+
+.science-card:hover {
+    transform: translateY(-10px);
+    border-color: #48caff;
+    box-shadow: 0 0 25px rgba(0,140,255,.25);
+}
+
+.icon {
+    font-size: 42px;
+    margin-bottom: 20px;
+}
+
+.science-card h3 {
+    color: #48caff;
+    margin-bottom: 15px;
+}
+
+.science-card p {
+    color: #a8b5ca;
+    line-height: 1.8;
+}
+
+/* EXAMPLES */
+
+.examples-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(230px,1fr));
+    gap: 25px;
+}
+
+.example-card {
+    padding: 28px;
+    background: #0d1527;
+    border-left: 3px solid #328fe5;
+    border-radius: 8px;
+    transition: .3s;
+}
+
+.example-card:hover {
+    background: #142440;
+    box-shadow: 0 0 20px rgba(0,140,255,.15);
+}
+
+.example-card h3 {
+    color: #8ddcff;
+    margin-bottom: 15px;
+}
+
+.example-card p {
+    color: #aab7ca;
+    line-height: 1.8;
+}
+
+/* BLOG */
+
+.blog {
+    background: #090e1c;
+}
+
+.blog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 25px;
+}
+
+.blog-card {
+    padding: 30px;
+    background: #111a2c;
+    border: 1px solid #1d3655;
+    border-radius: 10px;
+    transition: .3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 0 25px rgba(0,140,255,.2);
+    border-color: #48caff;
+}
+
+.blog-card span {
+    color: #48caff;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.blog-card h3 {
+    color: white;
+    margin: 18px 0;
+}
+
+.blog-card p {
+    color: #a8b5ca;
+    line-height: 1.8;
+}
+
+/* GALLERY */
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+    gap: 20px;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 10px;
+    filter: brightness(.7) saturate(.8);
+    transition: .4s;
+}
+
+.gallery-container img:hover {
+    filter: brightness(1);
+    transform: scale(1.04);
+    box-shadow: 0 0 25px #087fc5;
+}
+
+/* QUOTE */
+
+.quote {
+    background: linear-gradient(135deg,#101b32,#080b18);
+    text-align: center;
+    color: #8ddcff;
+    font-size: 25px;
+    font-style: italic;
+    line-height: 1.8;
+    text-shadow: 0 0 15px #008cff;
+}
+
+/* CONTACT */
+
+.contact {
+    text-align: center;
+}
+
+.contact p {
+    color: #aab7ca;
+    margin: 20px 0 30px;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+
+footer {
+    background: #03050c;
+    text-align: center;
+    padding: 30px;
+    color: #8292aa;
+    line-height: 2;
+    border-top: 1px solid #17243d;
+}
+
+footer span {
+    color: #48caff;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:650px) {
+
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    nav a {
+        margin: 0;
+    }
+
+    .hero {
+        min-height: 550px;
+    }
+
+    .hero h1 {
+        font-size: 43px;
+    }
+
+    .hero h2 {
+        font-size: 20px;
+    }
+
+    .section-title {
+        font-size: 29px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<header>
+
+    <div class="logo">✦ DARK LIGHT</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#science">Science</a>
+        <a href="#examples">Examples</a>
+        <a href="#blog">Blog</a>
+        <a href="#gallery">Gallery</a>
+    </nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="tagline">
+            THE BEAUTY OF INVISIBLE LIGHT
+        </div>
+
+        <h1>TYNDALL EFFECT</h1>
+
+        <h2>Discover The Light Hidden In Darkness</h2>
+
+        <p>
+            A mysterious world where light meets tiny particles.
+            Explore glowing light beams, beautiful atmospheric
+            scenes and the science behind the magic.
+        </p>
+
+        <a href="#about" class="btn">
+            Explore The Mystery →
+        </a>
+
+    </div>
+
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+    <h2 class="section-title">About The Tyndall Effect</h2>
+
+    <p class="section-subtitle">
+        Understanding the science behind beautiful light beams.
+    </p>
+
+    <div class="about">
+
+        <p>
+            The Tyndall Effect is the scattering of light
+            by particles in a colloid or fine suspension.
+
+            When a beam of light passes through these particles,
+            some of the light is scattered in different directions,
+            making its path visible.
+        </p>
+
+        <br>
+
+        <p>
+            From mysterious forest light rays to glowing beams
+            in a dusty room, this phenomenon reveals how
+            science can create some of nature's most beautiful
+            visual experiences.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- SCIENCE -->
+
+<section class="science" id="science">
+
+    <h2 class="section-title">The Science Of Light</h2>
+
+    <p class="section-subtitle">
+        Four simple steps behind the phenomenon.
+    </p>
+
+    <div class="science-container">
+
+        <div class="science-card">
+            <div class="icon">💡</div>
+            <h3>Light Source</h3>
+            <p>
+                A beam of light enters a medium containing
+                tiny suspended particles.
+            </p>
+        </div>
+
+        <div class="science-card">
+            <div class="icon">🔬</div>
+            <h3>Particles</h3>
+            <p>
+                Tiny particles interact with the light
+                as it travels through the medium.
+            </p>
+        </div>
+
+        <div class="science-card">
+            <div class="icon">✨</div>
+            <h3>Scattering</h3>
+            <p>
+                Light is scattered in different directions
+                by the suspended particles.
+            </p>
+        </div>
+
+        <div class="science-card">
+            <div class="icon">🌌</div>
+            <h3>Visible Light</h3>
+            <p>
+                The scattered light makes the path of
+                the beam visible to an observer.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- EXAMPLES -->
+
+<section id="examples">
+
+    <h2 class="section-title">Light In Everyday Life</h2>
+
+    <p class="section-subtitle">
+        Discover the phenomenon around you.
+    </p>
+
+    <div class="examples-container">
+
+        <div class="example-card">
+            <h3>🌲 Forest Light Rays</h3>
+            <p>
+                Sunlight scattering through mist and
+                airborne particles creates beautiful
+                visible rays between trees.
+            </p>
+        </div>
+
+        <div class="example-card">
+            <h3>🌫️ Foggy Atmosphere</h3>
+            <p>
+                Light from headlights and lamps becomes
+                visible as it scatters through tiny
+                suspended water droplets.
+            </p>
+        </div>
+
+        <div class="example-card">
+            <h3>🔦 Dusty Rooms</h3>
+            <p>
+                Sunlight entering a dark room can reveal
+                a bright beam when dust particles scatter
+                the light.
+            </p>
+        </div>
+
+        <div class="example-card">
+            <h3>🧪 Colloidal Solutions</h3>
+            <p>
+                A flashlight passing through a suitable
+                colloidal solution can reveal the path
+                of light.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BLOG -->
+
+<section class="blog" id="blog">
+
+    <h2 class="section-title">My Dark Light Journal</h2>
+
+    <p class="section-subtitle">
+        Personal thoughts, science and discoveries.
+    </p>
+
+    <div class="blog-container">
+
+        <div class="blog-card">
+
+            <span>ARTICLE 01</span>
+
+            <h3>The Beauty Of Light In Darkness</h3>
+
+            <p>
+                Exploring the magical appearance of
+                light rays passing through a dark
+                and mysterious forest.
+            </p>
+
+        </div>
+
+        <div class="blog-card">
+
+            <span>ARTICLE 02</span>
+
+            <h3>The Invisible Made Visible</h3>
+
+            <p>
+                How tiny particles reveal the hidden
+                path of light and make ordinary
+                surroundings look extraordinary.
+            </p>
+
+        </div>
+
+        <div class="blog-card">
+
+            <span>ARTICLE 03</span>
+
+            <h3>Science Behind The Magic</h3>
+
+            <p>
+                Understanding the relationship between
+                light, particles and scattering through
+                simple everyday examples.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+
+    <h2 class="section-title">Dark Light Gallery</h2>
+
+    <p class="section-subtitle">
+        A visual collection of light and atmosphere.
+    </p>
+
+    <div class="gallery-container">
+
+        <img src="https://images.unsplash.com/photo-1511497584788-876760111969"
+        alt="Mysterious forest">
+
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b"
+        alt="Forest light rays">
+
+        <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8"
+        alt="Golden sunlight">
+
+        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e"
+        alt="Dark woodland">
+
+    </div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote">
+
+    "Even in the darkest places,
+    light finds a way to reveal its beauty."
+
+    <br><br>
+
+    — DARK LIGHT JOURNAL
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+    <h2 class="section-title">Connect With Me</h2>
+
+    <p>
+        Interested in science, light and mysterious
+        natural phenomena? Let's share our discoveries.
+    </p>
+
+    <a href="mailto:hello@example.com" class="btn">
+        Contact Me →
+    </a>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p><span>✦ DARK LIGHT</span></p>
+
+    <p>Exploring The Beauty Of Science And Light</p>
+
+    <p>© 2026 Dark Light Journal | Personal Blog</p>
+
+</footer>
+
+</body>
+</html>
